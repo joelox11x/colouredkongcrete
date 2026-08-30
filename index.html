@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coloured Kong-Crete Stencil | Spray-On Concrete — Gold Coast &amp; SEQ</title>
+<meta name="description" content="Spray-on concrete stencil resurfacing for driveways, patios, pool areas and footpaths across the Gold Coast and South East Queensland. Free, no-obligation quotes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root{
+    --bg:#07090B; --bg-2:#111418; --bg-3:#1B1F24;
+    --text:#F5F7F8; --text-dim:#96A0A8; --line:rgba(255,255,255,.10); --nav-bg:rgba(7,9,11,.85);
+    --cyan:#26C6F0; --cyan-dark:#0E8FC0; --gold:#D4AF37; --gold-dark:#AD8B27;
+    --display:'Bebas Neue',sans-serif; --body:'Archivo',sans-serif;
+  }
+  html[data-theme="light"]{
+    --bg:#F2F5F6; --bg-2:#FFFFFF; --bg-3:#EAEEF0;
+    --text:#10171B; --text-dim:#5C6870; --line:rgba(10,20,25,.12); --nav-bg:rgba(242,245,246,.88);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s ease, color .4s ease;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  img{display:block;max-width:100%;}
+  ::selection{background:var(--cyan);color:#04141a;}
+  input,select,textarea{font-family:inherit;}
+
+  .noise{position:fixed;inset:0;z-index:998;pointer-events:none;opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  .texture{position:relative;}
+  .texture::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;
+    background-image:repeating-linear-gradient(135deg, var(--cyan) 0 1px, transparent 1px 64px), repeating-linear-gradient(45deg, var(--gold) 0 1px, transparent 1px 64px);}
+  .texture > .section-inner{position:relative;z-index:1;}
+
+  /* ===== NAV ===== */
+  header.nav{position:sticky;top:0;z-index:300;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;}
+  .nav-brand{display:flex;align-items:center;gap:12px;z-index:2;}
+  .nav-brand img{height:44px;width:44px;border-radius:50%;object-fit:cover;border:1.5px solid var(--cyan);}
+  .nav-brand-text{font-family:var(--display);font-size:19px;letter-spacing:.02em;line-height:1;}
+  .nav-brand-text span{display:block;font-family:var(--body);font-size:9px;letter-spacing:.18em;color:var(--gold);font-weight:700;margin-top:4px;}
+  .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600;color:var(--text-dim);}
+  .nav-links a:hover{color:var(--text);}
+  .nav-right{display:flex;align-items:center;gap:16px;}
+  .nav-phone{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;}
+  .nav-phone svg{width:15px;height:15px;color:var(--cyan);}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;font-weight:700;font-size:13.5px;border-radius:4px;transition:all .25s ease;text-transform:uppercase;letter-spacing:.03em;}
+  .btn-cyan{background:var(--cyan);color:#04141a;}
+  .btn-cyan:hover{background:#5AD6FF;box-shadow:0 10px 26px rgba(38,198,240,.3);}
+  .btn-outline{border:1.5px solid var(--line);color:var(--text);}
+  .btn-outline:hover{border-color:var(--cyan);background:rgba(38,198,240,.08);}
+  .theme-toggle{width:46px;height:26px;border-radius:999px;border:1px solid var(--line);position:relative;flex-shrink:0;background:var(--bg-3);}
+  .theme-toggle .knob{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--cyan);transition:left .35s cubic-bezier(.16,1,.3,1);}
+  html[data-theme="light"] .theme-toggle .knob{left:22px;}
+  .burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:30px;height:26px;z-index:301;}
+  .burger span{display:block;width:100%;height:2px;background:var(--text);transition:all .35s cubic-bezier(.16,1,.3,1);}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:900px){
+    .nav-links{position:fixed;inset:0;width:100%;height:100vh;background:var(--bg);flex-direction:column;justify-content:center;gap:30px;font-size:19px;
+      transform:translateX(100%);transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:300;}
+    .nav-links.open{transform:translateX(0);}
+    .nav-phone{display:none;}
+    .nav-right .btn-cyan{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:70px 5vw 0;overflow:hidden;}
+  .hero-bg-single{position:absolute;inset:0;z-index:0;}
+  .hero-bg-single img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.4);}
+  html[data-theme="light"] .hero-bg-single img{filter:grayscale(.1) brightness(.95);}
+  .hero-bg-overlay{position:absolute;inset:0;z-index:1;background:
+      radial-gradient(ellipse 70% 60% at 75% 10%, rgba(38,198,240,.16), transparent 60%),
+      linear-gradient(180deg, rgba(7,9,11,.6) 0%, var(--bg) 92%);}
+  html[data-theme="light"] .hero-bg-overlay{background:
+      radial-gradient(ellipse 70% 60% at 75% 10%, rgba(38,198,240,.10), transparent 60%),
+      linear-gradient(180deg, rgba(242,245,246,.58) 0%, rgba(242,245,246,.8) 35%, var(--bg) 68%);}
+  .hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:56px;align-items:center;padding-bottom:70px;}
+  @media(max-width:960px){.hero-inner{grid-template-columns:1fr;}}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.4);padding:8px 16px;border-radius:999px;font-size:12.5px;font-weight:700;color:var(--gold);margin-bottom:24px;text-transform:uppercase;letter-spacing:.04em;}
+  .hero-copy h1{font-family:var(--display);font-size:clamp(42px,6vw,76px);line-height:.98;letter-spacing:.005em;text-transform:uppercase;color:var(--text);}
+  html[data-theme="dark"] .hero-copy h1{color:#fff;}
+  .hero-copy h1 .cy{color:var(--cyan);}
+  .hero-copy p{margin-top:22px;font-size:17px;line-height:1.6;color:var(--text-dim);max-width:48ch;}
+  html[data-theme="dark"] .hero-copy p{color:#C9D2D6;}
+  .hero-slogan{margin-top:14px;font-family:var(--display);font-size:16px;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;}
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+
+  .hero-slider{position:relative;border-radius:8px;overflow:hidden;width:100%;max-width:380px;height:380px;box-shadow:0 30px 60px -28px rgba(0,0,0,.6);border:1px solid var(--line);justify-self:end;}
+  @media(max-width:960px){.hero-slider{justify-self:center;max-width:400px;height:400px;}}
+  .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;overflow:hidden;}
+  .hero-slide.active{opacity:1;z-index:2;}
+  .hero-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);}
+  .hero-slide img.kenburns{animation:hero-kenburns 5.2s ease-out forwards;}
+  @keyframes hero-kenburns{from{transform:scale(1.12);}to{transform:scale(1);}}
+  .hero-photo-tag{position:absolute;bottom:12px;left:12px;z-index:3;background:rgba(7,9,11,.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);padding:8px 13px;border-radius:5px;}
+  .hero-photo-tag .lbl{font-size:9.5px;color:#A9B2B6;font-weight:600;}
+  .hero-photo-tag .val{font-family:var(--display);font-size:13.5px;letter-spacing:.02em;color:var(--cyan);}
+  .hero-dots{position:absolute;bottom:12px;right:12px;z-index:3;display:flex;gap:6px;}
+  .hero-dots button{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .3s;}
+  .hero-dots button.active{background:var(--cyan);width:16px;border-radius:4px;}
+
+  /* ===== VALUE ROW ===== */
+  .value-bar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);position:relative;z-index:2;}
+  .value-bar-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);}
+  @media(min-width:760px){.value-bar-inner{grid-template-columns:repeat(4,1fr);}}
+  .value-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:26px 16px;border-right:1px solid var(--line);}
+  .value-item:last-child{border-right:none;}
+  .value-item svg{width:26px;height:26px;color:var(--cyan);}
+  .value-item span{font-size:12.5px;font-weight:700;line-height:1.35;text-transform:uppercase;letter-spacing:.02em;}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:90px 5vw;position:relative;}
+  .section-inner{max-width:1320px;margin:0 auto;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head h2{font-family:var(--display);font-size:clamp(30px,3.6vw,46px);text-transform:uppercase;letter-spacing:.01em;line-height:1.05;}
+  .section-head h2 .cy{color:var(--cyan);}
+  .section-head p{margin-top:14px;color:var(--text-dim);font-size:16px;line-height:1.6;}
+
+  /* ===== SERVICES (3x3 grid) ===== */
+  .services-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative;z-index:1;}
+  @media(min-width:640px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:960px){.services-grid{grid-template-columns:repeat(3,1fr);}}
+  .service-card{background:var(--bg-2);overflow:hidden;transition:background .3s ease;}
+  .service-card:hover, .service-card.tap-active{background:var(--bg-3);}
+  .service-media{aspect-ratio:4/3;overflow:hidden;}
+  .service-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .service-card:hover .service-media img, .service-card.tap-active .service-media img{transform:scale(1.05);}
+  .service-body{padding:22px 24px 26px;}
+  .service-body h3{font-family:var(--display);font-size:22px;letter-spacing:.02em;margin-bottom:8px;text-transform:uppercase;}
+  .service-body p{font-size:14px;color:var(--text-dim);line-height:1.6;margin-bottom:16px;}
+  .service-link{font-weight:700;font-size:13px;color:var(--cyan);text-transform:uppercase;letter-spacing:.03em;}
+
+  /* ===== FINISHES & PATTERNS ===== */
+  .finishes{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .finishes-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;}
+  @media(min-width:900px){.finishes-grid{grid-template-columns:1fr 1fr;}}
+  .finishes-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .finishes-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid var(--line);}
+  .finishes-photos img:nth-child(2){margin-top:28px;}
+  .finish-list{list-style:none;}
+  .finish-list li{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line);}
+  .finish-list li:first-child{padding-top:0;}
+  .finish-list li svg{width:22px;height:22px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+  .finish-list h4{font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px;}
+  .finish-list p{font-size:13.5px;color:var(--text-dim);}
+
+  /* ===== FEATURED WORK COLLAGE ===== */
+  .collage-wrap{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+  .collage-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:12px;grid-auto-flow:dense;}
+  @media(min-width:700px){.collage-grid{grid-auto-rows:190px;}}
+  .collage-item{position:relative;overflow:hidden;border-radius:10px;border:1px solid var(--line);grid-column:span 2;}
+  @media(min-width:700px){
+    .collage-item{grid-column:span 1;}
+    .collage-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
+    .collage-item:nth-child(4){grid-column:span 2;}
+  }
+  .collage-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .collage-item:hover img, .collage-item.tap-active img{transform:scale(1.08);}
+  .collage-item .collage-tag{position:absolute;bottom:10px;left:10px;background:rgba(7,9,11,.75);color:#fff;padding:5px 12px;border-radius:999px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;backdrop-filter:blur(6px);}
+  .collage-item.feature .collage-tag{font-size:12.5px;padding:7px 15px;background:var(--cyan);color:#04141a;}
+
+  /* ===== GALLERY ===== */
+  .gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;position:relative;z-index:1;}
+  @media(min-width:900px){.gal-grid{grid-template-columns:repeat(4,1fr);}}
+  .gal-item{position:relative;overflow:hidden;border-radius:6px;aspect-ratio:1/1;border:1px solid var(--line);}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .gal-item:hover img, .gal-item.tap-active img{transform:scale(1.05);}
+  .gal-tag{position:absolute;bottom:12px;left:12px;background:rgba(7,9,11,.8);color:#fff;padding:6px 12px;border-radius:4px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+
+  /* ===== SOCIAL PROOF (from their real posts) ===== */
+  .social{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .social-grid{display:grid;grid-template-columns:1fr;gap:20px;position:relative;z-index:1;}
+  @media(min-width:700px){.social-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1080px){.social-grid{grid-template-columns:repeat(4,1fr);}}
+  .social-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .social-media{aspect-ratio:1/1;overflow:hidden;}
+  .social-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .social-card:hover .social-media img, .social-card.tap-active .social-media img{transform:scale(1.08);}
+  .social-body{padding:16px 18px 18px;}
+  .social-handle{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:15px;letter-spacing:.02em;color:var(--text);margin-bottom:8px;text-transform:uppercase;line-height:1.15;}
+  .social-handle i{font-size:15px;color:var(--cyan);flex-shrink:0;}
+  .social-body p{font-size:13px;color:var(--text-dim);line-height:1.55;}
+
+  /* ===== WHY US ===== */
+  .why{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-grid{display:grid;grid-template-columns:1fr;gap:16px;position:relative;z-index:1;}
+  @media(min-width:760px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  .why-item{display:flex;gap:16px;padding:26px;border-radius:8px;background:var(--bg-2);border:1px solid var(--line);}
+  .why-item svg{width:26px;height:26px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+  .why-item h4{font-family:var(--display);font-size:18px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.02em;}
+  .why-item p{font-size:13.5px;color:var(--text-dim);line-height:1.6;}
+
+  /* ===== QUOTE FORM ===== */
+  .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-start;position:relative;z-index:1;}
+  @media(max-width:900px){.quote-grid{grid-template-columns:1fr;gap:36px;}}
+  .quote-copy h2{font-family:var(--display);font-size:clamp(30px,3.6vw,46px);text-transform:uppercase;line-height:1.05;}
+  .quote-copy p{margin-top:16px;color:var(--text-dim);font-size:15.5px;line-height:1.65;max-width:44ch;}
+  .quote-contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;}
+  @media(max-width:560px){.quote-contact-cards{grid-template-columns:1fr;}}
+  .quote-phone-card{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:transform .2s ease, border-color .2s ease;}
+  .quote-phone-card:hover, .quote-phone-card.tap-active{transform:translateY(-3px);border-color:var(--cyan);}
+  .quote-phone-card .top-row{display:flex;align-items:center;gap:12px;}
+  .quote-phone-card i{font-size:20px;color:var(--cyan);flex-shrink:0;width:22px;text-align:center;}
+  .quote-phone-card.wa i{color:#25D366;}
+  .quote-phone-card.fb i{color:#1877F2;}
+  .quote-phone-card.ig i{color:#C13584;}
+  .quote-phone-card a{color:inherit;}
+  .quote-contact-cards a.quote-phone-card{display:flex;}
+  .quote-phone-card .lbl{font-size:11.5px;color:var(--text-dim);}
+  .quote-phone-card .val{font-family:var(--display);font-size:18px;letter-spacing:.02em;}
+  .quote-trust-list{list-style:none;margin-top:28px;}
+  .quote-trust-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--text-dim);}
+  .quote-trust-list li:last-child{border-bottom:none;}
+  .quote-trust-list li svg{width:19px;height:19px;color:var(--gold);flex-shrink:0;margin-top:1px;}
+  .quote-form{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:32px;}
+  .form-row{margin-bottom:16px;}
+  .form-row label{display:block;font-size:12px;font-weight:700;margin-bottom:7px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.03em;}
+  .form-row input, .form-row select, .form-row textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:5px;font-size:14.5px;background:var(--bg);color:var(--text);}
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{outline:2px solid var(--cyan);outline-offset:1px;border-color:var(--cyan);}
+  .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:480px){.form-row-2{grid-template-columns:1fr;}}
+  .form-submit{width:100%;justify-content:center;padding:15px;font-size:15px;margin-top:6px;}
+  .form-note{font-size:12px;color:var(--text-dim);margin-top:12px;text-align:center;}
+  .form-success{display:none;background:rgba(38,198,240,.1);border:1px solid rgba(38,198,240,.35);color:var(--cyan);padding:16px;border-radius:6px;font-size:14px;font-weight:600;margin-top:14px;text-align:center;}
+  .form-success.show{display:block;}
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner{padding:0;}
+  .cta-banner-inner{position:relative;min-height:50vh;display:flex;align-items:center;overflow:hidden;}
+  .cta-banner-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.7);}
+  .cta-banner-inner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(7,9,11,.9) 0%, rgba(7,9,11,.6) 55%, rgba(7,9,11,.25) 100%);}
+  .cta-banner-content{position:relative;z-index:2;padding:0 5vw;max-width:1320px;margin:0 auto;width:100%;}
+  .cta-banner-content h2{font-family:var(--display);font-size:clamp(32px,4.4vw,56px);text-transform:uppercase;max-width:16ch;line-height:1.02;color:#fff;}
+  .cta-banner-content h2 .cy{color:var(--cyan);}
+  .cta-banner-content p{margin-top:14px;color:#C9D2D6;font-size:16px;max-width:40ch;}
+  .cta-banner-actions{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--bg);border-top:1px solid var(--line);padding:60px 5vw 30px;}
+  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:36px;}
+  @media(min-width:760px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;}}
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .foot-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid var(--cyan);}
+  .foot-brand span{font-family:var(--display);font-size:19px;letter-spacing:.02em;}
+  .foot-col h5{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:16px;font-weight:700;}
+  .foot-col a, .foot-col p{display:block;font-size:14px;color:var(--text-dim);margin-bottom:10px;}
+  .foot-col a:hover{color:var(--text);}
+  .foot-bottom{max-width:1320px;margin:44px auto 0;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--text-dim);}
+
+  /* ===== WHATSAPP FLOATING BUTTON ===== */
+  .wa-float{position:fixed;bottom:24px;right:24px;z-index:250;width:60px;height:60px;border-radius:50%;background:#25D366;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(37,211,102,.45);transition:transform .25s ease;}
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float i{font-size:30px;color:#fff;}
+  .wa-float-pulse{position:absolute;inset:0;border-radius:50%;background:#25D366;animation:wa-pulse 2.2s ease-out infinite;z-index:-1;}
+  @keyframes wa-pulse{0%{transform:scale(1);opacity:.6;}100%{transform:scale(1.9);opacity:0;}}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media(prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .wa-float-pulse{animation:none;}
+    .hero-slide img.kenburns{animation:none;transform:scale(1);}
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header class="nav" id="siteNav">
+  <div class="nav-brand">
+    <img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.09-PM.jpeg" alt="Coloured Kong-Crete Stencil logo">
+    <div class="nav-brand-text">COLOURED KONG-CRETE<span>Stencil — Spray-On Concrete</span></div>
+  </div>
+  <nav class="nav-links" id="navLinks">
+    <a href="#services">Services</a>
+    <a href="#gallery">Our work</a>
+    <a href="#why">Why us</a>
+    <a href="#quote">Get a quote</a>
+  </nav>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"><span class="knob"></span></button>
+    <a class="nav-phone" href="tel:0435002817"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>0435 002 817</a>
+    <a class="btn btn-cyan" href="#quote">Get a Free Quote</a>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg-single">
+    <img src="http://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.09-PM-1.jpeg" alt="">
+  </div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="hero-tag">★ Servicing Gold Coast &amp; South East Queensland</span>
+      <h1>Transform and<br><span class="cy">Rejuvenate</span><br>Your Space</h1>
+      <p>Spray-on concrete stencil resurfacing for driveways, patios, pool areas and pathways. A premium, durable finish that gives your existing concrete a brand-new look — without the cost of replacing it.</p>
+      <div class="hero-slogan">Strength Meets Style</div>
+      <div class="hero-actions">
+        <a class="btn btn-cyan" href="#quote">Get a Free Quote</a>
+        <a class="btn btn-outline" href="#gallery">See Our Work</a>
+      </div>
+    </div>
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slide active"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg" alt="Driveway resurfacing"></div>
+      <div class="hero-slide"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg" alt="Patio resurfacing"></div>
+      <div class="hero-slide"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg" alt="Pool area resurfacing"></div>
+      <div class="hero-photo-tag"><div class="lbl">Recent project</div><div class="val" id="heroSliderLabel">Driveway Resurface</div></div>
+      <div class="hero-dots">
+        <button class="active" data-slide="0" aria-label="Slide 1"></button>
+        <button data-slide="1" aria-label="Slide 2"></button>
+        <button data-slide="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="value-bar">
+  <div class="value-bar-inner">
+    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17.5 6.5 21 8 13.5 3 9l6.5-.5z"/></svg><span>Boosts Property Value</span></div>
+    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Covers Cracks &amp; Stains</span></div>
+    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg><span>Durable, Long-Lasting</span></div>
+    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="17" r="2.5"/><circle cx="6" cy="12" r="2.5"/></svg><span>Custom Designs &amp; Colours</span></div>
+  </div>
+</div>
+
+<section id="services" class="texture">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Resurfacing For Every <span class="cy">Part Of Your Property</span></h2>
+      <p>The same premium stencil process, sized and detailed to suit each surface.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg" alt="Driveway resurfacing"></div>
+        <div class="service-body"><h3>Driveways</h3><p>The first thing visitors see — a stencilled driveway sets the tone for the whole property.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg" alt="Patio resurfacing"></div>
+        <div class="service-body"><h3>Patios</h3><p>A finish that holds up to outdoor furniture, foot traffic and Queensland weather.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg" alt="Pool area resurfacing"></div>
+        <div class="service-body"><h3>Pool Areas</h3><p>Slip-conscious, glare-reducing finishes designed to stay cool underfoot.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM.jpeg" alt="Footpath resurfacing"></div>
+        <div class="service-body"><h3>Footpaths</h3><p>Tie garden paths and walkways into the same look as the rest of the property.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM-1.jpeg" alt="House surrounds resurfacing"></div>
+        <div class="service-body"><h3>House Surrounds</h3><p>Full perimeter resurfacing for a consistent, finished look all the way around.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM.jpeg" alt="Custom concrete resurfacing project"></div>
+        <div class="service-body"><h3>Custom Projects</h3><p>Every property is different — talk to us about a finish tailored to your space.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finishes">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Your Style. <span class="cy">Your Finish.</span></h2>
+      <p>From modern, clean looks to bold statement pieces — every project is finished to suit your home.</p>
+    </div>
+    <div class="finishes-grid">
+      <div class="finishes-photos">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.47-PM.jpeg" alt="Stencil concrete finish detail">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.47-PM-1.jpeg" alt="Stencil concrete pattern detail">
+      </div>
+      <ul class="finish-list">
+        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Sleek Plain Colours</h4><p>A clean, minimal finish for a modern, understated look.</p></div></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Premium Fleck Finishes</h4><p>Subtle texture and tone variation for a more dimensional surface.</p></div></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Bold Diamond and Tile Patterns</h4><p>Geometric stencil patterns that make a statement.</p></div></li>
+        <li class="reveal" style="border-bottom:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Custom Freehand Designs</h4><p>A one-of-a-kind layout designed around your space.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>A Look At Our <span class="cy">Finished Work</span></h2>
+      <p>A snapshot of recent driveways, patios and pool surrounds across the Gold Coast.</p>
+    </div>
+    <div class="collage-wrap">
+      <div class="collage-grid">
+        <div class="collage-item feature reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-3.jpeg" alt="Featured concrete resurfacing project"><span class="collage-tag">Featured Project</span></div>
+        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-4.jpeg" alt="Pool area resurfacing"><span class="collage-tag">Pool Area</span></div>
+        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM.jpeg" alt="Pool area resurfacing"><span class="collage-tag">Pool Area</span></div>
+        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-5.jpeg" alt="Patio resurfacing"><span class="collage-tag">Patio</span></div>
+        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM-3.jpeg" alt="Footpath resurfacing"><span class="collage-tag">Footpath</span></div>
+        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-1.jpeg" alt="Pool area resurfacing"><span class="collage-tag">Pool Area</span></div>
+        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM.jpeg" alt="Footpath resurfacing"><span class="collage-tag">Footpath</span></div>
+        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.35-PM.jpeg" alt="Concrete resurfacing project"><span class="collage-tag">Patio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Recent Work Across <span class="cy">The Gold Coast</span></h2>
+      <p>A selection of finished driveways, patios and pool surrounds.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg" alt="Patio project"><span class="gal-tag">Patio</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg" alt="Footpath project"><span class="gal-tag">Footpath</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM-1.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.41.25-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.04-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="social">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Straight From <span class="cy">Our Socials</span></h2>
+      <p>Recent transformations, as shared with our followers on Facebook and Instagram.</p>
+    </div>
+    <div class="social-grid">
+      <div class="social-card reveal">
+        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.46-PM.jpeg" alt="Recent transformation"></div>
+        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-house-chimney-window"></i>Outdoor Spaces. Elevated.</div><p>Another premium transformation — a clean, modern look that turns an ordinary outdoor area into a true feature of the home.</p></div>
+      </div>
+      <div class="social-card reveal">
+        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.46-PM-1.jpeg" alt="Recent transformation"></div>
+        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-arrows-rotate"></i>Give Your Concrete A Second Life</div><p>Beautiful, long-lasting surfaces that add value and street appeal to your home.</p></div>
+      </div>
+      <div class="social-card reveal">
+        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-3.jpeg" alt="Recent transformation"></div>
+        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-wand-magic-sparkles"></i>Revamp. Restore. Reimagine.</div><p>Instantly boost street appeal and property value with a durable, long-lasting coating system.</p></div>
+      </div>
+      <div class="social-card reveal">
+        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-1.jpeg" alt="Recent transformation"></div>
+        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-shield-halved"></i>Built Tough. Designed to Impress.</div><p>Made to last — a cost-effective alternative to replacing your concrete entirely.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Why Homeowners Are <span class="cy">Choosing Us</span></h2>
+      <p>A clean, seamless finish that transforms everyday concrete into something modern, stylish and built to last.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><div><h4>Cost-Effective Alternative</h4><p>A fraction of the cost of ripping out and replacing your existing concrete.</p></div></div>
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><h4>Durable, Non-Slip Finish</h4><p>Built to handle Queensland weather and everyday foot traffic, safely.</p></div></div>
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12l4 6-10 12L2 9z"/></svg><div><h4>Professional Workmanship</h4><p>High-quality finishes with attention to every detail, from prep to seal.</p></div></div>
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6"/></svg><div><h4>Free, No-Obligation Quotes</h4><p>Message or call and we'll get you a straightforward quote, no pressure.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="section-inner">
+    <div class="quote-grid">
+      <div class="quote-copy">
+        <h2>Get A Free, <span class="cy">No-Obligation</span> Quote</h2>
+        <p>Send us a message today and let's bring your concrete back to life.</p>
+        <div class="quote-contact-cards">
+          <a class="quote-phone-card" href="tel:0435002817">
+            <div class="top-row"><i class="fa-solid fa-phone"></i><div class="lbl">Call or text</div></div>
+            <div class="val">0435 002 817</div>
+          </a>
+          <a class="quote-phone-card wa" href="https://wa.me/61435002817" target="_blank" rel="noopener">
+            <div class="top-row"><i class="fa-brands fa-whatsapp"></i><div class="lbl">WhatsApp</div></div>
+            <div class="val">+61 435 002 817</div>
+          </a>
+          <a class="quote-phone-card fb" href="https://www.facebook.com/profile.php?id=61558061070335" target="_blank" rel="noopener">
+            <div class="top-row"><i class="fa-brands fa-facebook-f"></i><div class="lbl">Facebook</div></div>
+            <div class="val" style="font-size:14.5px;">Coloured kong Crete stencil</div>
+          </a>
+          <a class="quote-phone-card ig" href="https://www.instagram.com/coloured_kongcrete_stencil/" target="_blank" rel="noopener">
+            <div class="top-row"><i class="fa-brands fa-instagram"></i><div class="lbl">Instagram</div></div>
+            <div class="val" style="font-size:14.5px;">@coloured_kongcrete_stencil</div>
+          </a>
+        </div>
+        <ul class="quote-trust-list">
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Free measure &amp; quote, no obligation to book</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>We usually reply within one business day</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Servicing Gold Coast &amp; South East Queensland</li>
+        </ul>
+      </div>
+      <form class="quote-form" id="quoteForm">
+        <div class="form-row-2">
+          <div class="form-row"><label for="qName">Name</label><input id="qName" type="text" required></div>
+          <div class="form-row"><label for="qPhone">Phone</label><input id="qPhone" type="tel" required></div>
+        </div>
+        <div class="form-row"><label for="qSuburb">Suburb</label><input id="qSuburb" type="text" placeholder="e.g. Southport, QLD"></div>
+        <div class="form-row"><label for="qService">Service Needed</label>
+          <select id="qService">
+            <option>Driveway</option><option>Patio</option><option>Pool area</option><option>Footpath</option><option>House surrounds</option><option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-row"><label for="qMsg">Tell Us About The Project</label><textarea id="qMsg" rows="3" placeholder="Approximate size, current condition, colours in mind..."></textarea></div>
+        <button type="submit" class="btn btn-cyan form-submit">Request My Free Quote</button>
+        <div class="form-success" id="formSuccess">Thanks — your request is ready to send. Your email app should now be open with the details filled in.</div>
+        <p class="form-note">We reply within one business day. No spam, ever.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.47-PM-1.jpeg" alt="Finished concrete project">
+    <div class="cta-banner-content">
+      <h2>Ready To <span class="cy">Transform</span> Your Concrete?</h2>
+      <p>Driveways, patios, pool areas, footpaths and house surrounds — free quotes across Gold Coast &amp; South East Queensland.</p>
+      <div class="cta-banner-actions">
+        <a class="btn btn-cyan" href="#quote">Get a Free Quote</a>
+        <a class="btn btn-outline" style="border-color:#fff;color:#fff;" href="tel:0435002817">Call 0435 002 817</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.09-PM.jpeg" alt="Logo">
+        <span>COLOURED KONG-CRETE STENCIL</span>
+      </div>
+      <p style="max-width:32ch;">Strength Meets Style. Spray-on concrete stencil resurfacing across the Gold Coast and South East Queensland.</p>
+    </div>
+    <div class="foot-col"><h5>Services</h5><a href="#services">Driveways</a><a href="#services">Patios</a><a href="#services">Pool Areas</a><a href="#services">Footpaths</a><a href="#services">House Surrounds</a></div>
+    <div class="foot-col"><h5>Contact</h5><a href="tel:0435002817">0435 002 817</a><a href="#quote">Get a Free Quote</a><p>Gold Coast, QLD, 4209</p></div>
+    <div class="foot-col"><h5>Follow</h5><a href="https://www.instagram.com/coloured_kongcrete_stencil/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/profile.php?id=61558061070335" target="_blank" rel="noopener">Facebook</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Coloured Kong-Crete Stencil. All rights reserved.</span><span>Strength Meets Style — Gold Coast &amp; SEQ</span></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/61435002817" target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <span class="wa-float-pulse"></span>
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+const burgerBtn = document.getElementById('burgerBtn');
+const navLinks = document.getElementById('navLinks');
+burgerBtn.addEventListener('click', ()=>{ burgerBtn.classList.toggle('open'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{ burgerBtn.classList.remove('open'); navLinks.classList.remove('open'); }));
+
+const themeToggle = document.getElementById('themeToggle');
+const htmlEl = document.documentElement;
+themeToggle.addEventListener('click', ()=>{ htmlEl.setAttribute('data-theme', htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.hero-dots button');
+const heroLabels = ['Driveway Resurface','Patio Resurface','Pool Area Resurface'];
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!prefersReducedMotion){ heroSlides[0].querySelector('img').classList.add('kenburns'); }
+let heroCurrent = 0;
+function goToHeroSlide(i){
+  heroSlides[heroCurrent].classList.remove('active'); heroDots[heroCurrent].classList.remove('active');
+  heroCurrent = i;
+  const activeSlide = heroSlides[heroCurrent];
+  activeSlide.classList.add('active'); heroDots[heroCurrent].classList.add('active');
+  document.getElementById('heroSliderLabel').textContent = heroLabels[heroCurrent];
+  if(!prefersReducedMotion){
+    const img = activeSlide.querySelector('img');
+    img.classList.remove('kenburns'); void img.offsetWidth; img.classList.add('kenburns');
+  }
+}
+heroDots.forEach((d,i)=>d.addEventListener('click',()=>goToHeroSlide(i)));
+setInterval(()=>{goToHeroSlide((heroCurrent+1)%heroSlides.length);}, 5000);
+
+const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Touch devices have no real :hover — simulate the same feedback on tap */
+function addTapFeedback(selector){
+  document.querySelectorAll(selector).forEach(el=>{
+    el.addEventListener('touchstart', ()=>{ el.classList.add('tap-active'); }, {passive:true});
+    el.addEventListener('touchend', ()=>{ setTimeout(()=>el.classList.remove('tap-active'), 450); }, {passive:true});
+  });
+}
+addTapFeedback('.service-card, .gal-item, .collage-item, .social-card, .quote-phone-card');
+
+document.getElementById('quoteForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('qName').value;
+  const phone = document.getElementById('qPhone').value;
+  const suburb = document.getElementById('qSuburb').value;
+  const service = document.getElementById('qService').value;
+  const msg = document.getElementById('qMsg').value;
+  const subject = encodeURIComponent(`Quote request — ${service} (${name})`);
+  const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nSuburb: ${suburb}\nService: ${service}\n\nDetails:\n${msg}`);
+  /* TODO: replace with the business's real email, or swap this handler for a
+     Formspree/Web3Forms POST to submit silently with no email popup. */
+  window.location.href = `mailto:REPLACE-WITH-REAL-EMAIL@example.com?subject=${subject}&body=${body}`;
+  document.getElementById('formSuccess').classList.add('show');
+});
+</script>
+</body>
+</html>
