@@ -141,6 +141,19 @@
 
   /* ===== FINISHES & PATTERNS ===== */
   .finishes{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .finish-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+  .finish-tab{padding:12px 24px;border-radius:999px;border:1.5px solid var(--line);font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dim);transition:all .25s ease;}
+  .finish-tab:hover{border-color:var(--cyan);color:var(--text);}
+  .finish-tab.active{background:var(--cyan);border-color:var(--cyan);color:#04141a;}
+  .finish-showcase{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;}
+  @media(min-width:900px){.finish-showcase{grid-template-columns:1.1fr 1fr;}}
+  .finish-showcase-media{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;}
+  .finish-showcase-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;}
+  .finish-showcase-img.active{opacity:1;position:relative;}
+  .finish-desc{display:none;}
+  .finish-desc.active{display:block;}
+  .finish-desc h4{font-family:var(--display);font-size:26px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:10px;}
+  .finish-desc p{font-size:15px;color:var(--text-dim);line-height:1.6;max-width:40ch;}
   .finishes-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;}
   @media(min-width:900px){.finishes-grid{grid-template-columns:1fr 1fr;}}
   .finishes-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
@@ -152,6 +165,35 @@
   .finish-list li svg{width:22px;height:22px;color:var(--gold);flex-shrink:0;margin-top:2px;}
   .finish-list h4{font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px;}
   .finish-list p{font-size:13.5px;color:var(--text-dim);}
+
+  /* ===== REVIEWS MARQUEE ===== */
+  .reviews{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;}
+  .reviews-head{max-width:640px;margin:0 auto 40px;padding:0 5vw;text-align:left;}
+  .reviews-track-wrap{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+  .reviews-track{display:flex;gap:20px;width:max-content;animation:reviews-scroll 46s linear infinite;}
+  .reviews-track-wrap:hover .reviews-track{animation-play-state:paused;}
+  @keyframes reviews-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .review-card{flex:0 0 320px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px;}
+  .review-stars{color:var(--gold);font-size:15px;letter-spacing:2px;}
+  .review-card p{font-size:14px;line-height:1.6;color:var(--text-dim);flex-grow:1;}
+  .review-author{display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line);}
+  .review-avatar{width:36px;height:36px;border-radius:50%;background:var(--cyan);color:#04141a;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:15px;flex-shrink:0;}
+  .review-author-name{font-weight:700;font-size:13.5px;}
+  .review-author-src{font-size:11.5px;color:var(--text-dim);display:flex;align-items:center;gap:5px;}
+  .review-author-src i{color:#1877F2;}
+  .reviews-more{text-align:center;margin-top:36px;}
+  @media(prefers-reduced-motion: reduce){.reviews-track{animation-duration:140s;}}
+
+
+  /* ===== PROCESS ===== */
+  .process{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:700px){.process-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1100px){.process-grid{grid-template-columns:repeat(5,1fr);}}
+  .process-item{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:26px 22px;}
+  .process-num{font-family:var(--display);font-size:34px;color:var(--gold);letter-spacing:.02em;}
+  .process-item h4{font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:.02em;margin:8px 0 6px;}
+  .process-item p{font-size:13.5px;color:var(--text-dim);line-height:1.55;}
 
   /* ===== FEATURED WORK COLLAGE ===== */
   .collage-wrap{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
@@ -175,6 +217,9 @@
   .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
   .gal-item:hover img, .gal-item.tap-active img{transform:scale(1.05);}
   .gal-tag{position:absolute;bottom:12px;left:12px;background:rgba(7,9,11,.8);color:#fff;padding:6px 12px;border-radius:4px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+  .gal-item.feature .gal-tag{background:var(--cyan);color:#04141a;}
+  .gal-item.gal-extra{display:none;}
+  .gal-grid.expanded .gal-item.gal-extra{display:block;}
 
   /* ===== SOCIAL PROOF (from their real posts) ===== */
   .social{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -304,8 +349,8 @@
   <div class="hero-inner">
     <div class="hero-copy">
       <span class="hero-tag">★ Servicing Gold Coast &amp; Brisbane</span>
-      <h1>Transform and<br><span class="cy">Rejuvenate</span><br>Your Space</h1>
-      <p>Spray-on concrete stencil resurfacing for driveways, patios, pool areas and pathways. A premium, durable finish that gives your existing concrete a brand-new look — without the cost of replacing it.</p>
+      <h1>Transform Your<br>Concrete.<br><span class="cy">Transform</span> Your Home.</h1>
+      <p>Premium spray-on concrete resurfacing for driveways, patios, pool surrounds and pathways across the Gold Coast &amp; Brisbane.</p>
       <div class="hero-slogan">Strength Meets Style</div>
       <div class="hero-actions">
         <a class="btn btn-cyan" href="#quote">Get a Free Quote</a>
@@ -328,12 +373,29 @@
 
 <div class="value-bar">
   <div class="value-bar-inner">
-    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17.5 6.5 21 8 13.5 3 9l6.5-.5z"/></svg><span>Boosts Property Value</span></div>
-    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Covers Cracks &amp; Stains</span></div>
+    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17.5 6.5 21 8 13.5 3 9l6.5-.5z"/></svg><span>Boosts Street Appeal</span></div>
+    <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Transforms Stained &amp; Worn Concrete</span></div>
     <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg><span>Durable, Long-Lasting</span></div>
     <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="17" r="2.5"/><circle cx="6" cy="12" r="2.5"/></svg><span>Custom Designs &amp; Colours</span></div>
   </div>
 </div>
+
+
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Why Homeowners Are <span class="cy">Choosing Us</span></h2>
+      <p>A clean, seamless finish that transforms everyday concrete into something modern, stylish and built to last.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><div><h4>Cost-Effective Alternative</h4><p>A fraction of the cost of ripping out and replacing your existing concrete.</p></div></div>
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><h4>Durable, Non-Slip Finish</h4><p>Built to handle Queensland weather and everyday foot traffic, safely.</p></div></div>
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12l4 6-10 12L2 9z"/></svg><div><h4>Professional Workmanship</h4><p>High-quality finishes with attention to every detail, from prep to seal.</p></div></div>
+      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6"/></svg><div><h4>Free, No-Obligation Quotes</h4><p>Message or call and we'll get you a straightforward quote, no pressure.</p></div></div>
+    </div>
+  </div>
+</section>
 
 <section id="services" class="texture">
   <div class="section-inner">
@@ -343,28 +405,28 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg" alt="Patio resurfacing"></div>
-        <div class="service-body"><h3>Patios</h3><p>A finish that holds up to outdoor furniture, foot traffic and Queensland weather.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
-      </div>
-      <div class="service-card reveal">
         <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg" alt="Driveway resurfacing"></div>
-        <div class="service-body"><h3>Driveways</h3><p>The first thing visitors see — a stencilled driveway sets the tone for the whole property.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+        <div class="service-body"><h3>Driveways</h3><p>Transform tired, stained or dated concrete into a premium entrance that instantly lifts your home's street appeal.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg" alt="Pool area resurfacing"></div>
-        <div class="service-body"><h3>Pool Areas</h3><p>Slip-conscious, glare-reducing finishes designed to stay cool underfoot.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg" alt="Patio resurfacing"></div>
+        <div class="service-body"><h3>Patios</h3><p>A clean, modern surface built to handle outdoor furniture, foot traffic and everyday living.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM-1.jpeg" alt="Driveway resurfacing"></div>
-        <div class="service-body"><h3>Driveways</h3><p>A smooth, seamless finish that instantly lifts the entrance to your home.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-2.jpeg" alt="House surrounds resurfacing"></div>
+        <div class="service-body"><h3>House Surrounds</h3><p>Refresh concrete around your entire home for one consistent, premium finish.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM.jpeg" alt="Pool area resurfacing"></div>
-        <div class="service-body"><h3>Pool Areas</h3><p>A fenced, safety-compliant surface that keeps its grip even around the water's edge.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-3.jpeg" alt="Footpath resurfacing"></div>
+        <div class="service-body"><h3>Pathways &amp; Footpaths</h3><p>Give worn concrete a fresh, seamless finish that ties your outdoor areas together.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
       </div>
       <div class="service-card reveal">
-        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM.jpeg" alt="Driveway resurfacing"></div>
-        <div class="service-body"><h3>Driveways</h3><p>Every driveway is measured and stencilled to fit your exact entrance, no two the same.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-1.jpeg" alt="Pool surrounds resurfacing"></div>
+        <div class="service-body"><h3>Pool Surrounds</h3><p>Durable, slip-conscious finishes designed for wet areas while completely transforming the look of your pool.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM.jpeg" alt="Outdoor entertaining area resurfacing"></div>
+        <div class="service-body"><h3>Outdoor Entertaining Areas</h3><p>Create a stylish, seamless space designed for hosting and everyday relaxing.</p><a class="service-link" href="#quote">Get a Quote →</a></div>
       </div>
     </div>
   </div>
@@ -387,6 +449,55 @@
         <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Bold Diamond and Tile Patterns</h4><p>Geometric stencil patterns that make a statement.</p></div></li>
         <li class="reveal" style="border-bottom:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Custom Freehand Designs</h4><p>A one-of-a-kind layout designed around your space.</p></div></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>The <span class="cy">Kong-Crete</span> Process</h2>
+      <p>A professional system from first inspection to final seal — not just someone spraying colour over concrete.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-item reveal"><span class="process-num">01</span><h4>Surface Preparation</h4><p>Existing concrete is thoroughly prepared for maximum adhesion.</p></div>
+      <div class="process-item reveal"><span class="process-num">02</span><h4>Repairs &amp; Preparation</h4><p>Problem areas are assessed and prepared before resurfacing.</p></div>
+      <div class="process-item reveal"><span class="process-num">03</span><h4>Design &amp; Colour</h4><p>Choose your stencil pattern, colours and finish.</p></div>
+      <div class="process-item reveal"><span class="process-num">04</span><h4>Spray Application</h4><p>Your selected finish is professionally applied.</p></div>
+      <div class="process-item reveal"><span class="process-num">05</span><h4>Protective Sealing</h4><p>The completed surface is sealed for protection and durability.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="finishes">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Choose Your <span class="cy">Finish</span></h2>
+      <p>Five stencil styles, one premium process. Tap a finish to see it up close.</p>
+    </div>
+    <div class="finish-tabs" id="finishTabs">
+      <button class="finish-tab active" data-finish="0">Plain</button>
+      <button class="finish-tab" data-finish="1">Fleck</button>
+      <button class="finish-tab" data-finish="2">Tile</button>
+      <button class="finish-tab" data-finish="3">Diamond</button>
+      <button class="finish-tab" data-finish="4">Freehand</button>
+    </div>
+    <div class="finish-showcase">
+      <div class="finish-showcase-media">
+        <img id="finishImg0" class="finish-showcase-img active" src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM.jpeg" alt="Plain concrete stencil finish">
+        <img id="finishImg1" class="finish-showcase-img" src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-4.jpeg" alt="Fleck concrete stencil finish">
+        <img id="finishImg2" class="finish-showcase-img" src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.06-AM-3.jpeg" alt="Tile concrete stencil finish">
+        <img id="finishImg3" class="finish-showcase-img" src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.04-AM.jpeg" alt="Diamond concrete stencil finish">
+        <img id="finishImg4" class="finish-showcase-img" src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.00-AM.jpeg" alt="Freehand concrete stencil finish">
+      </div>
+      <div class="finish-showcase-copy">
+        <div class="finish-desc active" data-finish-desc="0"><h4>Sleek Plain Colours</h4><p>A clean, minimal finish for a modern, understated look.</p></div>
+        <div class="finish-desc" data-finish-desc="1"><h4>Premium Fleck Finishes</h4><p>Subtle texture and tone variation for a more dimensional surface.</p></div>
+        <div class="finish-desc" data-finish-desc="2"><h4>Bold Tile Patterns</h4><p>Classic tile-look stencilling that brings structure to any space.</p></div>
+        <div class="finish-desc" data-finish-desc="3"><h4>Statement Diamond Patterns</h4><p>Geometric stencil patterns that make a statement.</p></div>
+        <div class="finish-desc" data-finish-desc="4"><h4>Custom Freehand Designs</h4><p>A one-of-a-kind layout designed around your space.</p></div>
+        <a class="btn btn-cyan" href="#quote" style="margin-top:20px;">Get a Free Quote</a>
+      </div>
     </div>
   </div>
 </section>
@@ -415,18 +526,41 @@
 <section id="gallery">
   <div class="section-inner">
     <div class="section-head">
-      <h2>Recent Work Across <span class="cy">The Gold Coast</span></h2>
-      <p>A selection of finished driveways, patios and pool areas.</p>
+      <h2>Our <span class="cy">Work</span></h2>
+      <p>A selection of finished driveways, patios, pool surrounds and footpaths across the Gold Coast and Brisbane.</p>
     </div>
-    <div class="gal-grid">
+    <div class="gal-grid" id="galGrid">
+      <div class="gal-item feature reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-3.jpeg" alt="Featured concrete resurfacing project"><span class="gal-tag">Featured Project</span></div>
       <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
       <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg" alt="Patio project"><span class="gal-tag">Patio</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-1.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM-3.jpeg" alt="Footpath project"><span class="gal-tag">Footpath</span></div>
       <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM-1.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.14-AM-1.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-5.jpeg" alt="Patio project"><span class="gal-tag">Patio</span></div>
       <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-2.jpeg" alt="House surrounds project"><span class="gal-tag">House Surrounds</span></div>
       <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.41.25-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.04-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-3.jpeg" alt="Footpath project"><span class="gal-tag">Footpath</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-4.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-4.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-1.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-1.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM.jpeg" alt="Footpath project"><span class="gal-tag">Footpath</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.35-PM.jpeg" alt="Patio project"><span class="gal-tag">Patio</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.04-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-2.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">House Surrounds</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-3.jpeg" alt="House surrounds project"><span class="gal-tag">House Surrounds</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-1.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">Driveway</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.20.59-AM.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">Footpath</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.05-AM-2.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">House Surrounds</span></div>
+      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.12-AM.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">Patio</span></div>
+    </div>
+    <div class="reviews-more">
+      <button class="btn btn-outline" id="galToggleBtn">View More Projects</button>
     </div>
   </div>
 </section>
@@ -448,7 +582,7 @@
       </div>
       <div class="social-card reveal">
         <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-3.jpeg" alt="Recent transformation"></div>
-        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-wand-magic-sparkles"></i>Revamp. Restore. Reimagine.</div><p>Instantly boost street appeal and property value with a durable, long-lasting coating system.</p></div>
+        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-wand-magic-sparkles"></i>Revamp. Restore. Reimagine.</div><p>Instantly boost street appeal with a durable, long-lasting coating system.</p></div>
       </div>
       <div class="social-card reveal">
         <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-1.jpeg" alt="Recent transformation"></div>
@@ -458,18 +592,47 @@
   </div>
 </section>
 
-<section class="why" id="why">
-  <div class="section-inner">
-    <div class="section-head">
-      <h2>Why Homeowners Are <span class="cy">Choosing Us</span></h2>
-      <p>A clean, seamless finish that transforms everyday concrete into something modern, stylish and built to last.</p>
+<section class="reviews">
+  <div class="reviews-head">
+    <h2 style="font-family:var(--display);font-size:clamp(30px,3.6vw,46px);text-transform:uppercase;letter-spacing:.01em;line-height:1.05;">What Our <span class="cy">Customers Say</span></h2>
+    <p style="margin-top:14px;color:var(--text-dim);font-size:16px;line-height:1.6;">Reviews left by real customers on our socials — Facebook &amp; Instagram.</p>
+  </div>
+  <div class="reviews-track-wrap">
+    <div class="reviews-track" id="reviewsTrack">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"We recently had the pleasure of working with Kyle, and we couldn't be more impressed. From the get-go, Kyle was prompt, responsive, and completely upfront about what was achievable. His transparency was refreshing."</p>
+        <div class="review-author"><div class="review-avatar">A</div><div><div class="review-author-name">Ahmad Qleibo</div><div class="review-author-src"><i class="fa-brands fa-facebook"></i>Facebook · Sept 2024</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Kyle has recently done our driveway and foot path. Highly recommend, very responsive, very punctual and also reasonably priced. Overall a great experience, thanks Kyle."</p>
+        <div class="review-author"><div class="review-avatar">A</div><div><div class="review-author-name">Alex Jameson</div><div class="review-author-src"><i class="fa-brands fa-facebook"></i>Facebook · May 2024</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Kyle from Kongcrete is a true professional! From start to finish, he exceeded all expectations. His attention to detail and workmanship is commendable."</p>
+        <div class="review-author"><div class="review-avatar">K</div><div><div class="review-author-name">Kezza VG</div><div class="review-author-src"><i class="fa-brands fa-facebook"></i>Facebook · Apr 2024</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"I recently had the pleasure of working with Kyle and his team, and I cannot recommend their services highly enough! From start to finish, the experience was nothing short of exceptional."</p>
+        <div class="review-author"><div class="review-avatar">S</div><div><div class="review-author-name">Shannon Worthington</div><div class="review-author-src"><i class="fa-brands fa-facebook"></i>Facebook · Oct 2024</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Great experience from start to finish. Kyle is professional, knowledgeable and does a fantastic job for a reasonable price. Highly recommend them to make your ugly concrete look spectacular!"</p>
+        <div class="review-author"><div class="review-avatar">B</div><div><div class="review-author-name">Beck Davis</div><div class="review-author-src"><i class="fa-brands fa-facebook"></i>Facebook · Sept 2025</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Kyle did a fantastic job of my driveway and side paths. They look amazing and I'm very happy with the result."</p>
+        <div class="review-author"><div class="review-avatar">J</div><div><div class="review-author-name">James Stone</div><div class="review-author-src"><i class="fa-brands fa-facebook"></i>Facebook · Jul 2025</div></div></div>
+      </div>
     </div>
-    <div class="why-grid">
-      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><div><h4>Cost-Effective Alternative</h4><p>A fraction of the cost of ripping out and replacing your existing concrete.</p></div></div>
-      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><h4>Durable, Non-Slip Finish</h4><p>Built to handle Queensland weather and everyday foot traffic, safely.</p></div></div>
-      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12l4 6-10 12L2 9z"/></svg><div><h4>Professional Workmanship</h4><p>High-quality finishes with attention to every detail, from prep to seal.</p></div></div>
-      <div class="why-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6"/></svg><div><h4>Free, No-Obligation Quotes</h4><p>Message or call and we'll get you a straightforward quote, no pressure.</p></div></div>
-    </div>
+  </div>
+  <div class="reviews-more">
+    <a class="btn btn-outline" href="https://www.facebook.com/profile.php?id=61558061070335&sk=reviews" target="_blank" rel="noopener">View More Reviews</a>
   </div>
 </section>
 
@@ -477,7 +640,7 @@
   <div class="section-inner">
     <div class="quote-grid">
       <div class="quote-copy">
-        <h2>Get A Free, <span class="cy">No-Obligation</span> Quote</h2>
+        <h2>Get My Free <span class="cy">Measure &amp; Quote</span></h2>
         <p>Send us a message today and let's bring your concrete back to life.</p>
         <div class="quote-contact-cards">
           <a class="quote-phone-card" href="tel:0435002817">
@@ -498,9 +661,10 @@
           </a>
         </div>
         <ul class="quote-trust-list">
-          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Free measure &amp; quote, no obligation to book</li>
-          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>We usually reply within one business day</li>
-          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Servicing Gold Coast &amp; Brisbane</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>No obligation</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Gold Coast &amp; Brisbane</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Fast response</li>
+          <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Send photos for a quicker estimate</li>
         </ul>
       </div>
       <form class="quote-form" id="quoteForm">
@@ -515,8 +679,8 @@
           </select>
         </div>
         <div class="form-row"><label for="qMsg">Tell Us About The Project</label><textarea id="qMsg" rows="3" placeholder="Approximate size, current condition, colours in mind..."></textarea></div>
-        <button type="submit" class="btn btn-cyan form-submit">Request My Free Quote</button>
-        <div class="form-success" id="formSuccess">Thanks — your request is ready to send. Your email app should now be open with the details filled in.</div>
+        <button type="submit" class="btn btn-cyan form-submit">Get My Free Measure &amp; Quote</button>
+        <div class="form-success" id="formSuccess">Thanks — your request is ready to send. WhatsApp should now be open with the details filled in.</div>
         <p class="form-note">We reply within one business day. No spam, ever.</p>
       </form>
     </div>
@@ -550,7 +714,7 @@
     <div class="foot-col"><h5>Contact</h5><a href="tel:0435002817">0435 002 817</a><a href="#quote">Get a Free Quote</a><p>Gold Coast, QLD, 4209</p></div>
     <div class="foot-col"><h5>Follow</h5><a href="https://www.instagram.com/coloured_kongcrete_stencil/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/profile.php?id=61558061070335" target="_blank" rel="noopener">Facebook</a></div>
   </div>
-  <div class="foot-bottom"><span>© 2026 Coloured Kong-Crete Stencil. All rights reserved.</span><span>Strength Meets Style — Gold Coast &amp; Brisbane</span></div>
+  <div class="foot-bottom"><span>© 2026 Coloured Kong-Crete Stencil. All rights reserved.</span><span><a href="privacy.html" style="color:var(--text-dim);">Privacy Policy</a> · Strength Meets Style — Gold Coast &amp; Brisbane</span></div>
 </footer>
 
 <a class="wa-float" href="https://wa.me/61435002817" target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
@@ -600,6 +764,39 @@ function addTapFeedback(selector){
 }
 addTapFeedback('.service-card, .gal-item, .collage-item, .social-card, .quote-phone-card');
 
+/* Gallery: show more projects */
+const galGrid = document.getElementById('galGrid');
+const galToggleBtn = document.getElementById('galToggleBtn');
+if(galToggleBtn){
+  galToggleBtn.addEventListener('click', ()=>{
+    const expanded = galGrid.classList.toggle('expanded');
+    galToggleBtn.textContent = expanded ? 'Show Less' : 'View More Projects';
+    galGrid.querySelectorAll('.gal-item.gal-extra.reveal').forEach(el=>io.observe(el));
+  });
+}
+
+/* Finish selector tabs */
+const finishTabs = document.querySelectorAll('.finish-tab');
+finishTabs.forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    const i = tab.dataset.finish;
+    finishTabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.finish-showcase-img').forEach(img=>img.classList.remove('active'));
+    document.querySelectorAll('.finish-desc').forEach(d=>d.classList.remove('active'));
+    document.getElementById('finishImg'+i).classList.add('active');
+    document.querySelector('.finish-desc[data-finish-desc="'+i+'"]').classList.add('active');
+  });
+});
+
+/* Reviews: duplicate cards so the horizontal scroll loops seamlessly */
+const reviewsTrack = document.getElementById('reviewsTrack');
+if(reviewsTrack){
+  const clone = reviewsTrack.innerHTML;
+  reviewsTrack.innerHTML += clone;
+}
+
+
 document.getElementById('quoteForm').addEventListener('submit', function(e){
   e.preventDefault();
   const name = document.getElementById('qName').value;
@@ -607,11 +804,11 @@ document.getElementById('quoteForm').addEventListener('submit', function(e){
   const suburb = document.getElementById('qSuburb').value;
   const service = document.getElementById('qService').value;
   const msg = document.getElementById('qMsg').value;
-  const subject = encodeURIComponent(`Quote request — ${service} (${name})`);
-  const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nSuburb: ${suburb}\nService: ${service}\n\nDetails:\n${msg}`);
-  /* TODO: replace with the business's real email, or swap this handler for a
-     Formspree/Web3Forms POST to submit silently with no email popup. */
-  window.location.href = `mailto:REPLACE-WITH-REAL-EMAIL@example.com?subject=${subject}&body=${body}`;
+  const text = encodeURIComponent(`Hi Coloured Kong-Crete Stencil, I'd like a free quote.\n\nName: ${name}\nPhone: ${phone}\nSuburb: ${suburb}\nService: ${service}\n\nDetails: ${msg}`);
+  /* TODO: once hosting + a real domain are set up, swap this for a proper form
+     tool (WPForms, Formspree, etc.) that can also accept photo uploads. For now
+     it opens WhatsApp with the details pre-filled, ready for the customer to send. */
+  window.open(`https://wa.me/61435002817?text=${text}`, '_blank');
   document.getElementById('formSuccess').classList.add('show');
 });
 </script>
