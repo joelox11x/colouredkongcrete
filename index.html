@@ -195,45 +195,43 @@
   .process-item h4{font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:.02em;margin:8px 0 6px;}
   .process-item p{font-size:13.5px;color:var(--text-dim);line-height:1.55;}
 
-  /* ===== FEATURED WORK COLLAGE ===== */
-  .collage-wrap{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-  .collage-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:12px;grid-auto-flow:dense;}
-  @media(min-width:700px){.collage-grid{grid-auto-rows:190px;}}
-  .collage-item{position:relative;overflow:hidden;border-radius:10px;border:1px solid var(--line);grid-column:span 2;}
-  @media(min-width:700px){
-    .collage-item{grid-column:span 1;}
-    .collage-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
-    .collage-item:nth-child(4){grid-column:span 2;}
-  }
-  .collage-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
-  .collage-item:hover img, .collage-item.tap-active img{transform:scale(1.08);}
-  .collage-item .collage-tag{position:absolute;bottom:10px;left:10px;background:rgba(7,9,11,.75);color:#fff;padding:5px 12px;border-radius:999px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;backdrop-filter:blur(6px);}
-  .collage-item.feature .collage-tag{font-size:12.5px;padding:7px 15px;background:var(--cyan);color:#04141a;}
+  /* ===== GALLERY (category cards -> lightbox) ===== */
+  .gal-cats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;position:relative;z-index:1;}
+  @media(min-width:700px){.gal-cats{grid-template-columns:repeat(3,1fr);gap:20px;}}
+  .gal-cat{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:4/3;border:1px solid var(--line);cursor:pointer;background:var(--bg-3);outline:none;}
+  .gal-cat img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .gal-cat:hover img, .gal-cat.tap-active img, .gal-cat:focus-visible img{transform:scale(1.07);}
+  .gal-cat:focus-visible{box-shadow:0 0 0 3px var(--cyan);}
+  .gal-cat::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(7,9,11,0) 38%, rgba(7,9,11,.86) 100%);transition:opacity .3s ease;}
+  .gal-cat-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;}
+  .gal-cat-icon{width:38px;height:38px;border-radius:50%;background:rgba(38,198,240,.16);border:1px solid rgba(38,198,240,.45);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:15px;flex-shrink:0;}
+  .gal-cat-info h3{font-family:var(--display);font-size:19px;letter-spacing:.02em;color:#fff;text-transform:uppercase;line-height:1.05;}
+  .gal-cat-count{font-size:11.5px;color:#C9D2D6;font-weight:700;margin-top:5px;text-transform:uppercase;letter-spacing:.03em;}
+  @media(max-width:700px){.gal-cat-info h3{font-size:15.5px;} .gal-cat-icon{width:32px;height:32px;font-size:13px;}}
 
-  /* ===== GALLERY ===== */
-  .gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;position:relative;z-index:1;}
-  @media(min-width:900px){.gal-grid{grid-template-columns:repeat(4,1fr);}}
-  .gal-item{position:relative;overflow:hidden;border-radius:6px;aspect-ratio:1/1;border:1px solid var(--line);}
-  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
-  .gal-item:hover img, .gal-item.tap-active img{transform:scale(1.05);}
-  .gal-tag{position:absolute;bottom:12px;left:12px;background:rgba(7,9,11,.8);color:#fff;padding:6px 12px;border-radius:4px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
-  .gal-item.feature .gal-tag{background:var(--cyan);color:#04141a;}
-  .gal-item.gal-extra{display:none;}
-  .gal-grid.expanded .gal-item.gal-extra{display:block;}
-
-  /* ===== SOCIAL PROOF (from their real posts) ===== */
-  .social{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .social-grid{display:grid;grid-template-columns:1fr;gap:20px;position:relative;z-index:1;}
-  @media(min-width:700px){.social-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(min-width:1080px){.social-grid{grid-template-columns:repeat(4,1fr);}}
-  .social-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
-  .social-media{aspect-ratio:1/1;overflow:hidden;}
-  .social-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
-  .social-card:hover .social-media img, .social-card.tap-active .social-media img{transform:scale(1.08);}
-  .social-body{padding:16px 18px 18px;}
-  .social-handle{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:15px;letter-spacing:.02em;color:var(--text);margin-bottom:8px;text-transform:uppercase;line-height:1.15;}
-  .social-handle i{font-size:15px;color:var(--cyan);flex-shrink:0;}
-  .social-body p{font-size:13px;color:var(--text-dim);line-height:1.55;}
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;z-index:900;background:rgba(4,6,8,.96);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+  .lightbox.open{display:flex;}
+  .lightbox-top{width:100%;max-width:1100px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;color:#fff;flex-shrink:0;}
+  .lightbox-title{font-family:var(--display);font-size:19px;letter-spacing:.03em;text-transform:uppercase;}
+  .lightbox-count{font-size:13px;color:#A9B2B6;font-weight:600;margin-left:12px;}
+  .lightbox-close{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s ease;flex-shrink:0;}
+  .lightbox-close:hover{background:rgba(255,255,255,.12);border-color:#fff;}
+  .lightbox-stage{position:relative;width:100%;max-width:1100px;flex:1;display:flex;align-items:center;justify-content:center;min-height:0;}
+  .lightbox-stage img{max-width:100%;max-height:62vh;object-fit:contain;border-radius:8px;box-shadow:0 30px 80px -20px rgba(0,0,0,.75);}
+  .lightbox-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s ease;z-index:3;}
+  .lightbox-arrow:hover{background:var(--cyan);color:#04141a;border-color:var(--cyan);}
+  .lightbox-arrow.prev{left:4px;}
+  .lightbox-arrow.next{right:4px;}
+  @media(max-width:700px){.lightbox-arrow{width:38px;height:38px;font-size:14px;} .lightbox-stage img{max-height:52vh;}}
+  .lightbox-thumbs{width:100%;max-width:1100px;display:flex;gap:8px;overflow-x:auto;padding:14px 2px 4px;margin-top:6px;flex-shrink:0;scrollbar-width:thin;}
+  .lightbox-thumbs::-webkit-scrollbar{height:5px;}
+  .lightbox-thumbs::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22);border-radius:3px;}
+  .lightbox-thumb{flex:0 0 auto;width:70px;height:52px;border-radius:5px;overflow:hidden;border:2px solid transparent;opacity:.5;cursor:pointer;transition:all .2s ease;}
+  .lightbox-thumb img{width:100%;height:100%;object-fit:cover;}
+  .lightbox-thumb:hover{opacity:.85;}
+  .lightbox-thumb.active{opacity:1;border-color:var(--cyan);}
+  body.lb-open{overflow:hidden;}
 
   /* ===== WHY US ===== */
   .why{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -348,7 +346,6 @@
   <div class="hero-bg-overlay"></div>
   <div class="hero-inner">
     <div class="hero-copy">
-      <span class="hero-tag">★ Servicing Gold Coast &amp; Brisbane</span>
       <h1>Transform Your<br>Concrete.<br><span class="cy">Transform</span> Your Home.</h1>
       <p>Premium spray-on concrete resurfacing for driveways, patios, pool surrounds and pathways across the Gold Coast &amp; Brisbane.</p>
       <div class="hero-slogan">Strength Meets Style</div>
@@ -432,26 +429,7 @@
   </div>
 </section>
 
-<section class="finishes">
-  <div class="section-inner">
-    <div class="section-head">
-      <h2>Your Style. <span class="cy">Your Finish.</span></h2>
-      <p>From modern, clean looks to bold statement pieces — every project is finished to suit your home.</p>
-    </div>
-    <div class="finishes-grid">
-      <div class="finishes-photos">
-        <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.47-PM.jpeg" alt="Stencil concrete finish detail">
-        <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.47-PM-1.jpeg" alt="Stencil concrete pattern detail">
-      </div>
-      <ul class="finish-list">
-        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Sleek Plain Colours</h4><p>A clean, minimal finish for a modern, understated look.</p></div></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Premium Fleck Finishes</h4><p>Subtle texture and tone variation for a more dimensional surface.</p></div></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Bold Diamond and Tile Patterns</h4><p>Geometric stencil patterns that make a statement.</p></div></li>
-        <li class="reveal" style="border-bottom:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Custom Freehand Designs</h4><p>A one-of-a-kind layout designed around your space.</p></div></li>
-      </ul>
-    </div>
-  </div>
-</section>
+
 
 <section class="process">
   <div class="section-inner">
@@ -502,95 +480,69 @@
   </div>
 </section>
 
-<section>
-  <div class="section-inner">
-    <div class="section-head">
-      <h2>A Look At Our <span class="cy">Finished Work</span></h2>
-      <p>A snapshot of recent driveways, patios and pool areas across the Gold Coast.</p>
-    </div>
-    <div class="collage-wrap">
-      <div class="collage-grid">
-        <div class="collage-item feature reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-3.jpeg" alt="Featured concrete resurfacing project"><span class="collage-tag">Featured Project</span></div>
-        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-4.jpeg" alt="Pool area resurfacing"><span class="collage-tag">Pool Area</span></div>
-        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM.jpeg" alt="Pool area resurfacing"><span class="collage-tag">Pool Area</span></div>
-        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-5.jpeg" alt="Patio resurfacing"><span class="collage-tag">Patio</span></div>
-        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM-3.jpeg" alt="Footpath resurfacing"><span class="collage-tag">Footpath</span></div>
-        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-1.jpeg" alt="Pool area resurfacing"><span class="collage-tag">Pool Area</span></div>
-        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM.jpeg" alt="Footpath resurfacing"><span class="collage-tag">Footpath</span></div>
-        <div class="collage-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.35-PM.jpeg" alt="Concrete resurfacing project"><span class="collage-tag">Patio</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <section id="gallery">
   <div class="section-inner">
     <div class="section-head">
       <h2>Our <span class="cy">Work</span></h2>
-      <p>A selection of finished driveways, patios, pool surrounds and footpaths across the Gold Coast and Brisbane.</p>
+      <p>Choose a category below to browse the full photo album — driveways, patios, pool surrounds, pathways, house surrounds and outdoor entertaining areas we've transformed across the Gold Coast and Brisbane.</p>
     </div>
-    <div class="gal-grid" id="galGrid">
-      <div class="gal-item feature reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-3.jpeg" alt="Featured concrete resurfacing project"><span class="gal-tag">Featured Project</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg" alt="Patio project"><span class="gal-tag">Patio</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-1.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM-3.jpeg" alt="Footpath project"><span class="gal-tag">Footpath</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM-1.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.14-AM-1.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-5.jpeg" alt="Patio project"><span class="gal-tag">Patio</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-2.jpeg" alt="House surrounds project"><span class="gal-tag">House Surrounds</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.41.25-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-3.jpeg" alt="Footpath project"><span class="gal-tag">Footpath</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-4.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-4.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-1.jpeg" alt="Pool surrounds project"><span class="gal-tag">Pool Surrounds</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-1.jpeg" alt="Pool area project"><span class="gal-tag">Pool Area</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM.jpeg" alt="Footpath project"><span class="gal-tag">Footpath</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.35-PM.jpeg" alt="Patio project"><span class="gal-tag">Patio</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.04-PM.jpeg" alt="Driveway project"><span class="gal-tag">Driveway</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-2.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">House Surrounds</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-3.jpeg" alt="House surrounds project"><span class="gal-tag">House Surrounds</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-1.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">Driveway</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.20.59-AM.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">Footpath</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.05-AM-2.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">House Surrounds</span></div>
-      <div class="gal-item gal-extra reveal"><img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.12-AM.jpeg" alt="Concrete resurfacing project"><span class="gal-tag">Patio</span></div>
-    </div>
-    <div class="reviews-more">
-      <button class="btn btn-outline" id="galToggleBtn">View More Projects</button>
+    <div class="gal-cats" id="galCats">
+      <div class="gal-cat reveal" data-category="driveways" tabindex="0" role="button" aria-label="View Driveways photo album">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg" alt="Driveways concrete resurfacing project" loading="lazy">
+        <div class="gal-cat-body">
+          <div class="gal-cat-info"><h3>Driveways</h3><div class="gal-cat-count">View Gallery</div></div>
+        </div>
+      </div>
+      <div class="gal-cat reveal" data-category="patios" tabindex="0" role="button" aria-label="View Patios photo album">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-3.jpeg" alt="Patios concrete resurfacing project" loading="lazy">
+        <div class="gal-cat-body">
+          <div class="gal-cat-info"><h3>Patios</h3><div class="gal-cat-count">View Gallery</div></div>
+        </div>
+      </div>
+      <div class="gal-cat reveal" data-category="house" tabindex="0" role="button" aria-label="View House Surrounds photo album">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-2.jpeg" alt="House Surrounds concrete resurfacing project" loading="lazy">
+        <div class="gal-cat-body">
+          <div class="gal-cat-info"><h3>House Surrounds</h3><div class="gal-cat-count">View Gallery</div></div>
+        </div>
+      </div>
+      <div class="gal-cat reveal" data-category="pool" tabindex="0" role="button" aria-label="View Pool Surrounds photo album">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-4.jpeg" alt="Pool Surrounds concrete resurfacing project" loading="lazy">
+        <div class="gal-cat-body">
+          <div class="gal-cat-info"><h3>Pool Surrounds</h3><div class="gal-cat-count">View Gallery</div></div>
+        </div>
+      </div>
+      <div class="gal-cat reveal" data-category="footpaths" tabindex="0" role="button" aria-label="View Pathways and Footpaths photo album">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM-3.jpeg" alt="Pathways & Footpaths concrete resurfacing project" loading="lazy">
+        <div class="gal-cat-body">
+          <div class="gal-cat-info"><h3>Pathways &amp; Footpaths</h3><div class="gal-cat-count">View Gallery</div></div>
+        </div>
+      </div>
+      <div class="gal-cat reveal" data-category="entertaining" tabindex="0" role="button" aria-label="View Outdoor Entertaining photo album">
+        <img src="https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM.jpeg" alt="Outdoor Entertaining concrete resurfacing project" loading="lazy">
+        <div class="gal-cat-body">
+          <div class="gal-cat-info"><h3>Outdoor Entertaining</h3><div class="gal-cat-count">View Gallery</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="social">
-  <div class="section-inner">
-    <div class="section-head">
-      <h2>Straight From <span class="cy">Our Socials</span></h2>
-      <p>Recent transformations, as shared with our followers on Facebook and Instagram.</p>
-    </div>
-    <div class="social-grid">
-      <div class="social-card reveal">
-        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.46-PM.jpeg" alt="Recent transformation"></div>
-        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-house-chimney-window"></i>Outdoor Spaces. Elevated.</div><p>Another premium transformation — a clean, modern look that turns an ordinary outdoor area into a true feature of the home.</p></div>
-      </div>
-      <div class="social-card reveal">
-        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.46-PM-1.jpeg" alt="Recent transformation"></div>
-        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-arrows-rotate"></i>Give Your Concrete A Second Life</div><p>Beautiful, long-lasting surfaces that add value and street appeal to your home.</p></div>
-      </div>
-      <div class="social-card reveal">
-        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-3.jpeg" alt="Recent transformation"></div>
-        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-wand-magic-sparkles"></i>Revamp. Restore. Reimagine.</div><p>Instantly boost street appeal with a durable, long-lasting coating system.</p></div>
-      </div>
-      <div class="social-card reveal">
-        <div class="social-media"><img src="https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-1.jpeg" alt="Recent transformation"></div>
-        <div class="social-body"><div class="social-handle"><i class="fa-solid fa-shield-halved"></i>Built Tough. Designed to Impress.</div><p>Made to last — a cost-effective alternative to replacing your concrete entirely.</p></div>
-      </div>
-    </div>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-top">
+    <div><span class="lightbox-title" id="lbTitle"></span><span class="lightbox-count" id="lbCount"></span></div>
+    <button class="lightbox-close" id="lbClose" aria-label="Close gallery"><i class="fa-solid fa-xmark"></i></button>
   </div>
-</section>
+  <div class="lightbox-stage">
+    <button class="lightbox-arrow prev" id="lbPrev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+    <img id="lbImage" src="" alt="">
+    <button class="lightbox-arrow next" id="lbNext" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+  <div class="lightbox-thumbs" id="lbThumbs"></div>
+</div>
+
+
 
 <section class="reviews">
   <div class="reviews-head">
@@ -762,18 +714,143 @@ function addTapFeedback(selector){
     el.addEventListener('touchend', ()=>{ setTimeout(()=>el.classList.remove('tap-active'), 450); }, {passive:true});
   });
 }
-addTapFeedback('.service-card, .gal-item, .collage-item, .social-card, .quote-phone-card');
+addTapFeedback('.service-card, .gal-cat, .quote-phone-card');
 
-/* Gallery: show more projects */
-const galGrid = document.getElementById('galGrid');
-const galToggleBtn = document.getElementById('galToggleBtn');
-if(galToggleBtn){
-  galToggleBtn.addEventListener('click', ()=>{
-    const expanded = galGrid.classList.toggle('expanded');
-    galToggleBtn.textContent = expanded ? 'Show Less' : 'View More Projects';
-    galGrid.querySelectorAll('.gal-item.gal-extra.reveal').forEach(el=>io.observe(el));
+/* ===== Gallery: category albums -> lightbox ===== */
+const galleryLabels = {
+  driveways: 'Driveways',
+  patios: 'Patios',
+  entertaining: 'Outdoor Entertaining',
+  pool: 'Pool Surrounds',
+  footpaths: 'Pathways & Footpaths',
+  house: 'House Surrounds'
+};
+
+const galleryPhotos = {
+  driveways: [
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.30-PM.jpeg', alt:'Driveways concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM-1.jpeg', alt:'Driveways concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.05-PM.jpeg', alt:'Driveways concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.04-PM.jpeg', alt:'Driveways concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-1.jpeg', alt:'Driveways concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-1.jpeg', alt:'Driveways concrete resurfacing project'}
+  ],
+  patios: [
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-3.jpeg', alt:'Patios concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.08-PM.jpeg', alt:'Patios concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-5.jpeg', alt:'Patios concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.35-PM.jpeg', alt:'Patios concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.12-AM.jpeg', alt:'Patios concrete resurfacing project'}
+  ],
+  entertaining: [
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM.jpeg', alt:'Outdoor Entertaining concrete resurfacing project'}
+  ],
+  pool: [
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM-4.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-1.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.14-AM-1.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.41.25-PM.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM-1.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-29-at-8.39.06-PM.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-4.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-1.jpeg', alt:'Pool Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.39-PM-1.jpeg', alt:'Pool Surrounds concrete resurfacing project'}
+  ],
+  footpaths: [
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.38-PM-3.jpeg', alt:'Pathways & Footpaths concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-3.jpeg', alt:'Pathways & Footpaths concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-5.04.37-PM.jpeg', alt:'Pathways & Footpaths concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.20.59-AM.jpeg', alt:'Pathways & Footpaths concrete resurfacing project'}
+  ],
+  house: [
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.09-AM-2.jpeg', alt:'House Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.08-AM-2.jpeg', alt:'House Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.07-AM-3.jpeg', alt:'House Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-10-at-5.21.05-AM-2.jpeg', alt:'House Surrounds concrete resurfacing project'},
+    {src:'https://arqfra-ai.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-30-at-4.18.45-PM-3.jpeg', alt:'House Surrounds concrete resurfacing project'}
+  ]
+};
+
+let lbCategory = null, lbIndex = 0;
+const lightbox = document.getElementById('lightbox');
+const lbImage = document.getElementById('lbImage');
+const lbTitleEl = document.getElementById('lbTitle');
+const lbCountEl = document.getElementById('lbCount');
+const lbThumbsEl = document.getElementById('lbThumbs');
+const lbPrevBtn = document.getElementById('lbPrev');
+const lbNextBtn = document.getElementById('lbNext');
+const lbCloseBtn = document.getElementById('lbClose');
+
+function renderThumbs(){
+  const photos = galleryPhotos[lbCategory];
+  lbThumbsEl.innerHTML = photos.map((p,i)=>
+    `<div class="lightbox-thumb${i===lbIndex?' active':''}" data-index="${i}"><img src="${p.src}" alt="${p.alt}" loading="lazy"></div>`
+  ).join('');
+  lbThumbsEl.querySelectorAll('.lightbox-thumb').forEach(t=>{
+    t.addEventListener('click', ()=>{ lbIndex = parseInt(t.dataset.index, 10); updateLightbox(); });
   });
 }
+
+function updateLightbox(){
+  const photos = galleryPhotos[lbCategory];
+  const photo = photos[lbIndex];
+  lbImage.src = photo.src;
+  lbImage.alt = photo.alt;
+  lbTitleEl.textContent = galleryLabels[lbCategory];
+  lbCountEl.textContent = `${lbIndex + 1} / ${photos.length}`;
+  lbThumbsEl.querySelectorAll('.lightbox-thumb').forEach((t, i)=> t.classList.toggle('active', i === lbIndex));
+  const activeThumb = lbThumbsEl.children[lbIndex];
+  if(activeThumb) activeThumb.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  const multi = photos.length > 1;
+  lbPrevBtn.style.display = multi ? 'flex' : 'none';
+  lbNextBtn.style.display = multi ? 'flex' : 'none';
+}
+
+function openLightbox(category, index){
+  lbCategory = category;
+  lbIndex = index;
+  renderThumbs();
+  updateLightbox();
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('lb-open');
+}
+
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('lb-open');
+}
+
+function lbShowPrev(){
+  const photos = galleryPhotos[lbCategory];
+  lbIndex = (lbIndex - 1 + photos.length) % photos.length;
+  updateLightbox();
+}
+
+function lbShowNext(){
+  const photos = galleryPhotos[lbCategory];
+  lbIndex = (lbIndex + 1) % photos.length;
+  updateLightbox();
+}
+
+document.querySelectorAll('.gal-cat').forEach(card=>{
+  card.addEventListener('click', ()=> openLightbox(card.dataset.category, 0));
+  card.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(card.dataset.category, 0); }
+  });
+});
+lbPrevBtn.addEventListener('click', lbShowPrev);
+lbNextBtn.addEventListener('click', lbShowNext);
+lbCloseBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e)=>{
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowLeft') lbShowPrev();
+  if(e.key === 'ArrowRight') lbShowNext();
+});
 
 /* Finish selector tabs */
 const finishTabs = document.querySelectorAll('.finish-tab');
